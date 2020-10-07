@@ -1,0 +1,5 @@
+.card_container {
+  display: flex;
+  min-width: 300px;
+  flex-wrap: wrap;
+}
