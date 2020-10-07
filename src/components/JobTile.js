@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from './JobTile.module.css'
 
-const JobTile = () => {
+const JobTile = ({ job }) => {
   return (
     <div className={styles.card}>
       <div>
-        <img src="https://picsum.photos/64/64" alt="company-logo" />
+        <img src={job.company_logo ? job.company_logo : "https://via.placeholder.com/100"} alt="company-logo" className={styles.company_logo} />
       </div>
-      <div>Job title</div>
-      <div>Short description of the deisplayed job</div>
+      <div>{job.title}</div>
+      <div>{job.type}</div>
       <div>
         <span>tags</span>
         <span>tags</span>
@@ -21,5 +21,6 @@ const JobTile = () => {
     </div>
   )
 }
+
 
 export default JobTile
