@@ -18,7 +18,23 @@ class JobList extends React.Component {
   }
 
   render() {
-    const { jobs, filter } = this.props;
+    const {
+      jobs, filter, error, loading,
+    } = this.props;
+
+    if (error) {
+      return (
+        <div className={styles.message}>
+          Error!
+          {error.message}
+        </div>
+      );
+    }
+
+    if (loading) {
+      return <div className={styles.message}>Loading...</div>;
+    }
+
     let jobList;
     if (filter === 'All') {
       jobList = jobs.map(job => (
@@ -46,6 +62,8 @@ class JobList extends React.Component {
 const mapStateToProps = state => ({
   jobs: state.jobsReducer.jobs,
   filter: state.filterReducer,
+  error: state.jobsReducer.error,
+  loading: state.jobsReducer.loading,
 });
 
 const mapDispatchToFilter = dispatch => ({
@@ -58,6 +76,8 @@ JobList.propTypes = {
   filter: PropTypes.string.isRequired,
   fetchJobs: PropTypes.func.isRequired,
   changeFilter: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToFilter)(JobList);
