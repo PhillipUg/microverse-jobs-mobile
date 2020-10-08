@@ -27,6 +27,8 @@ This is a single page application built with React and Redux. This Application c
 ## Screenshots
 
 ![ScreenShot](./public/screen.png)
+<br>
+<br>
 ![ScreenShot](./public/screen1.png)
 
 ## Built With
