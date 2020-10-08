@@ -1,61 +1,63 @@
-import React from 'react'
-import JobTile from './JobTile'
-import styles from './JobList.module.css'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import Filter from './Filter'
-import { changeFilter, fetchJobs } from '../actions/index'
-
-
-
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import JobTile from './JobTile';
+import styles from './JobList.module.css';
+import Filter from './Filter';
+import { changeFilter, fetchJobs } from '../actions/index';
 
 class JobList extends React.Component {
   componentDidMount() {
-    this.props.fetchJobs()
+    const { fetchJobs } = this.props;
+    fetchJobs();
   }
 
-  handleFilter = (e) => {
-    this.props.changeFilter(e.target.value)
+  handleFilter = e => {
+    const { changeFilter } = this.props;
+    changeFilter(e.target.value);
   }
 
   render() {
-    const { jobs, filter } = this.props
+    const { jobs, filter } = this.props;
     let jobList;
     if (filter === 'All') {
       jobList = jobs.map(job => (
-        <Link to={'/jobs/' + job.id} key={job.id}><JobTile job={job} key={job.id} /></Link>
+        <JobTile job={job} key={job.id} />
       ));
     } else {
       jobList = jobs.filter(job => job.type === filter).map(job => (
-        <Link to={'/jobs/' + job.id} key={job.id}><JobTile job={job} key={job.id} /></Link>
+        <JobTile job={job} key={job.id} />
       ));
     }
     return (
       <div>
-        <Filter handleFilter={this.handleFilter} />
+        <div className={styles.filter}>
+          <h1>Microverse Jobs</h1>
+          <Filter handleFilter={this.handleFilter} />
+        </div>
         <div className={styles.card_container}>
           {jobList}
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    jobs: state.jobsReducer.jobs,
-    filter: state.filterReducer
-  }
-}
+const mapStateToProps = state => ({
+  jobs: state.jobsReducer.jobs,
+  filter: state.filterReducer,
+});
 
-const mapDispatchToFilter = (dispatch) => {
-  return {
-    changeFilter: (filter) => { dispatch(changeFilter(filter)) },
-    fetchJobs: () => dispatch(fetchJobs())
-  }
-}
+const mapDispatchToFilter = dispatch => ({
+  changeFilter: filter => { dispatch(changeFilter(filter)); },
+  fetchJobs: () => dispatch(fetchJobs()),
+});
 
+JobList.propTypes = {
+  jobs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filter: PropTypes.string.isRequired,
+  fetchJobs: PropTypes.func.isRequired,
+  changeFilter: PropTypes.func.isRequired,
+};
 
-
-export default connect(mapStateToProps, mapDispatchToFilter)(JobList)
+export default connect(mapStateToProps, mapDispatchToFilter)(JobList);
