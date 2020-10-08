@@ -15,7 +15,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #1C1C24;
+  background-color: #1c1c24;
 }
 
 .filter select {
@@ -25,14 +25,15 @@
   font-weight: bold;
   font-size: larger;
   color: #fff;
-  border: 2px solid #71717A;
-  background-color: #13131A;
+  border: 2px solid #71717a;
+  background-color: #13131a;
 }
 
 .filter h1 {
   color: #fff;
+
   /* font-size: 35px; */
-  border: 2px solid #71717A;
+  border: 2px solid #71717a;
   padding: 5px;
 }
 
@@ -41,5 +42,5 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #71717A;
+  color: #71717a;
 }

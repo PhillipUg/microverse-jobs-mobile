@@ -4,10 +4,10 @@
   height: 300px;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: #1C1C24;
+  background-color: #1c1c24;
   border-radius: 0.5rem;
   padding: 20px 25px;
-  color: #71717A;
+  color: #71717a;
 }
 
 .company_logo {
@@ -21,29 +21,29 @@
   justify-content: space-between;
   align-items: center;
   border: transparent;
+
   /* border: 1px solid red; */
   width: 100%;
 }
 
 .btn {
-  
   border-radius: 0.5rem;
   padding: 10px 2.5rem;
   font-weight: bold;
-  border:none;
+  border: none;
   cursor: pointer;
   outline: none;
 }
 
 .btn__apply {
-  background-color: #196AFB;
+  background-color: #196afb;
   color: #fff;
   margin-right: 10px;
 }
 
 .btn__save {
   background-color: #292932;
-  color: #5A5A64;
+  color: #5a5a64;
 }
 
 .title {
@@ -51,4 +51,3 @@
   color: #fff;
   font-size: large;
 }
-
