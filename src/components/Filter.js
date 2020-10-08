@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Filter = (props) => {
-  const { filter, handleFilter } = props
+const Filter = props => {
+  const { filter, handleFilter } = props;
   const jobTypes = [
     'Full Time',
     'Part Time',
-    'Contract'
+    'Contract',
   ];
   const typeList = jobTypes.map(type => (
     <option key={Math.random()} value={type}>
@@ -16,18 +17,20 @@ const Filter = (props) => {
   return (
     <select name="jobType" onChange={handleFilter} value={filter}>
       <option>
-        {"All"}
+        All
       </option>
       {typeList}
     </select>
-  )
-}
+  );
+};
 
-const mapStateToProps = (state) => {
-  return {
-    filter: state.filterReducer
-  }
-}
+const mapStateToProps = state => ({
+  filter: state.filterReducer,
+});
 
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  handleFilter: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps)(Filter);
