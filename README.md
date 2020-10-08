@@ -25,9 +25,9 @@ A curated catalog of remote entry level jobs best suited for bootcamp students w
 This is a single page application built with React and Redux. This Application consumes the Github Jobs Api. I use the Fetch Api to get jobs data and i store it in the redux store. The retrieved data can be filtered using a Filter stateless component. It is from the redux store that i then supply the data to various components. 
 
 ## Screenshots
-<p align="center"> <img src="./public/screen.png
-" alt="microverse-jobs" width="500"> </p> 
-<p align="center"> <img src="./public/screen1.png" alt="microverse-jobs" width="500"> </p>
+
+![ScreenShot](./public/screen.png)
+![ScreenShot](./public/screen1.png)
 
 ## Built With
 
