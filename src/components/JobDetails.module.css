@@ -26,11 +26,13 @@
   word-wrap: break-word;
 }
 
-.desc ul, .desc ol {
+.desc ul,
+.desc ol {
   padding-left: 20px;
 }
 
-.desc ul > li, .desc ol > li {
+.desc ul > li,
+.desc ol > li {
   padding: 5px 0;
   font-size: 16px;
 }

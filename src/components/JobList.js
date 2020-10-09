@@ -81,7 +81,7 @@ JobList.propTypes = {
 };
 
 JobList.defaultProps = {
-  error: null
-}
+  error: null,
+};
 
 export default connect(mapStateToProps, mapDispatchToFilter)(JobList);
