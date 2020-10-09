@@ -76,8 +76,12 @@ JobList.propTypes = {
   filter: PropTypes.string.isRequired,
   fetchJobs: PropTypes.func.isRequired,
   changeFilter: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
 };
+
+JobList.defaultProps = {
+  error: null
+}
 
 export default connect(mapStateToProps, mapDispatchToFilter)(JobList);
