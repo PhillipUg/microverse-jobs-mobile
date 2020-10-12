@@ -1,0 +1,46 @@
+.card_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 30px;
+  padding: 30px;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.filter {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1c1c24;
+}
+
+.filter select {
+  width: 10%;
+  padding: 5px;
+  outline: none;
+  font-weight: bold;
+  font-size: larger;
+  color: #fff;
+  border: 2px solid #71717a;
+  background-color: #13131a;
+}
+
+.filter h1 {
+  color: #fff;
+
+  /* font-size: 35px; */
+  border: 2px solid #71717a;
+  padding: 5px;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #71717a;
+}

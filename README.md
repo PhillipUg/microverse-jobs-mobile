@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Microverse Jobs
 
-## Available Scripts
+A curated catalog of remote entry level jobs best suited for bootcamp students with little to no previous tech-related working experience
 
-In the project directory, you can run:
+[![Netlify Status](https://api.netlify.com/api/v1/badges/558a8bdd-105f-4337-ae22-fb46ae334f0a/deploy-status)](https://app.netlify.com/sites/microverse-jobs/deploys)
 
-### `yarn start`
+<p align="center">
+  <a>
+    <p align="center"> <img src="./public/job-search.jpg" alt="microverse-jobs" width="200"> </p>
+  </a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <h2 align="center">Microverse Jobs</h2>
+  <h3 align="center">Built with React and Redux</h3>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  <p align="center">
+   <a href="https://microverse-jobs.netlify.app/">View Live Demo</a>
+   .
+    <a href="https://github.com/phillipug/microverse-jobs/issues">Report Bug</a>
+    · 
+    <a href="https://github.com/phillipug/microverse-jobs/issues">Request Feature</a>
+  </p>
+</p>
 
-### `yarn test`
+## About this project
+This is a single page application built with React and Redux. This Application consumes the Github Jobs Api. I use the Fetch Api to get jobs data and i store it in the redux store. The retrieved data can be filtered using a Filter stateless component. It is from the redux store that i then supply the data to various components. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `yarn build`
+![ScreenShot](./public/screen.png)
+<br>
+<br>
+![ScreenShot](./public/screen1.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- React.js
+- Redux / Redux-Thunk
+- API (Github Jobs)
+- Fetch Api
+- Netlify
+- CSS (Modules)
+- HTML
+- Webpack
+- ES6 JavaScript.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Live Demo
 
-### `yarn eject`
+[Live Demo Link](https://microverse-jobs.netlify.app/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To get a local copy up and running follow these simple example steps.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Prerequisites
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Have a browser installed
 
-## Learn More
+### Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone this repo with https://git@github.com/phillipug/microverse-jobs.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Usage - Follow these
 
-### Code Splitting
+1. <code>cd</code> into the project directory
+2. run <code>npm install</code>
+3. Navigate to [localhost:3000](http://localhost:3000) in your browser.
+4. Enjoy :smiley:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Future Updates
+- fetch data from multiple apis
+- add pagination
+- add more filter types e.g filter by location and job title etc..
+- Add login and sign up features so users are able to save jobs
+etc..
 
-### Analyzing the Bundle Size
+:bust_in_silhouette: **Phillip Musiime**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- LinkedIn: [Phillip Musiime](https://www.linkedin.com/in/phillip-musiime/)
+- GitHub: [PhillipUg](https://github.com/PhillipUg)
+- Twitter: [@Phillip_Ug](https://twitter.com/Phillip_Ug)
+- E-mail: phillipmusiime@gmail.com
 
-### Making a Progressive Web App
+## 🤝 Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Contributions, issues, and feature requests are welcome!
 
-### Advanced Configuration
+Feel free to check the [issues page](https://github.com/phillipug/microverse-jobs/issues).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Show your support
 
-### Deployment
+Give a ⭐️ if you like this project!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## 📝 License
 
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is [MIT](lic.url) licensed.
