@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import NewJobForm from './NewJobForm';
 // import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import JobTile from './JobTile';
@@ -88,6 +89,28 @@ import React, { useState, useEffect } from 'react';
 
 
 const JobList = () => {
+  const initialFormState = {
+    company: '',
+    position: '',
+    description: ''
+  }
+
+  const addJob = job => {
+    fetch('https://microverse-jobs-api.herokuapp.com/api/v1/jobs', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(job)
+    })
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+
+    setJobs([...jobs, job])
+  }
+
   const [jobs, setJobs] = useState([])
 
   useEffect(() => {
@@ -105,6 +128,7 @@ const JobList = () => {
           {job.company} | {job.position} | {job.description}
         </div>
       ))}
+      <NewJobForm addJob={addJob} initialFormState={initialFormState} />
     </div>
   )
 
