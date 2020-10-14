@@ -12,7 +12,7 @@ const JobTile = ({ job, removeJob }) => (
       <Link to={`/jobs/${job.id}`}>
         <button type="button" className={[styles.btn, styles.btn__apply].join(' ')}>Details</button>
       </Link>
-      <button onClick={() => removeJob(job.id)} type="button" className={[styles.btn, styles.btn__save].join(' ')}>Delete</button>
+      {/* <button onClick={() => removeJob(job.id)} type="button" className={[styles.btn, styles.btn__save].join(' ')}>Delete</button> */}
     </div>
   </div>
 );
