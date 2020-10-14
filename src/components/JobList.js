@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import NewJobForm from './NewJobForm';
 import JobTile from './JobTile'
 import { JobContext } from '../contexts/JobContext';
 import { Redirect } from 'react-router-dom'
@@ -8,11 +7,6 @@ import AuthService from '../services/authService';
 
 
 const JobList = () => {
-  // const initialFormState = {
-  //   company: '',
-  //   position: '',
-  //   description: ''
-  // }
 
   const { jobs } = useContext(JobContext)
 
@@ -25,7 +19,6 @@ const JobList = () => {
       {jobs.map((job, index) => (
         <JobTile key={index} job={job} />
       ))}
-      {/* <NewJobForm addJob={addJob} initialFormState={initialFormState} /> */}
     </div>
   )
 
