@@ -7,7 +7,7 @@
   background-color: #1c1c24;
   border-radius: 0.5rem;
   padding: 20px 25px;
-  color: #71717a;
+  color: #000002;
 }
 
 .company_logo {
@@ -48,6 +48,5 @@
 
 .title {
   font-weight: bold;
-  color: #fff;
   font-size: large;
 }
