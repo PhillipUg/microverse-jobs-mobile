@@ -16,30 +16,38 @@ const Navbar = (props) => {
   // const { auth } = props;
   // const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
   return (
-    <nav className="nav-wrapper grey darken-3">
+    <nav className="navbar">
       {currentUser ? (
-        <div className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link to={"/"} className="nav-link">
-              {currentUser.user.username}
+        <div >
+          <li>
+            <Link to={"/"}>
+              All Jobs
             </Link>
           </li>
-          <li className="nav-item">
-            <a href="/signup" className="nav-link" onClick={AuthService.logout}>
+          <li>
+            <Link to={"/favorites"}>
+              Favorites
+            </Link>
+          </li>
+          <li>
+            {currentUser.user.username}
+          </li>
+          <li >
+            <a href="/signin" onClick={AuthService.logout}>
               LogOut
               </a>
           </li>
         </div>
       ) : (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/signin"} className="nav-link">
+          <div>
+            <li>
+              <Link to={"/signin"}>
                 Login
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link to={"/signup"} className="nav-link">
+            <li>
+              <Link to={"/signup"}>
                 Sign Up
               </Link>
             </li>
