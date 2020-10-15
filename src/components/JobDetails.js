@@ -1,53 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { JobContext } from '../contexts/JobContext';
 import styles from './JobDetails.module.css';
 import { Redirect } from 'react-router-dom'
 import AuthService from '../services/authService';
-// import axios from 'axios'
+import axios from 'axios'
 import FavoriteService from '../services/favoriteService';
-// import authHeader from '../services/authHeader';
-import { FavoritesContext } from '../contexts/FavoritesContext';
+import authHeader from '../services/authHeader';
 
 const JobDetails = (props) => {
   const { jobs } = useContext(JobContext)
-  const { favorites } = useContext(FavoritesContext)
   const id = parseInt(props.match.params.id)
   const job = jobs.filter(job => job.id === id)
 
   const user = AuthService.getCurrentUser();
 
-  // const [favorited, setFavorited] = useState(false)
+  const [favorites, setFavorites] = useState([])
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001/api/v1/favorites", { headers: authHeader() })
-  //     .then(res => console.log(res))
-  // }, [])
+  useEffect(() => {
+    axios.get('https://microverse-jobs-api.herokuapp.com/api/v1/favorites', { headers: authHeader() })
+      .then(res => setFavorites(res.data))
+  }, [])
 
   const res = favorites.filter(fav => fav.job_id === job[0].id && fav.user_id === user.user.id)
-  console.log(res)
 
   if (!user) return <Redirect to="/signin" />
 
-  // console.log(user.user.id, job[0].id)
+  const handleClick = (e) => {
+    if (e.target.value === "favorite") {
+      e.target.value = "unfavorite"
+      e.target.style.background = "red"
+      e.target.textContent = "Remove from favorites"
+      FavoriteService.updateFav(user.user.id, job[0].id)
+    } else {
+      e.target.value = "favorite"
+      e.target.style.background = "yellow"
+      e.target.textContent = "Add to favorites"
+      FavoriteService.updateFav(user.user.id, job[0].id)
+    }
+  }
 
 
-  // const handleClick = (e) => {
-
-  //   if (e.target.value === "favorite") {
-  //     // setFavorited(true)
-  //     // FavoriteService.favorite(user.user.id, job[0].id)
-  //   } else {
-  //     // setFavorited(false)
-  //     // FavoriteService.unfavorite(user.user.id, job[0].id)
-  //   }
-  // }
-
-  // favorited ? () : ()
   let btn;
   if (!res.length) {
-    btn = <button onClick={() => FavoriteService.updateFav(user.user.id, job[0].id)} value="favorite" style={{ background: "yellow" }}>Add to favs</button>
+    btn = <button onClick={handleClick} style={{ background: "yellow" }} value="favorite" >Add to favs</button>
   } else {
-    btn = <button onClick={() => FavoriteService.updateFav(user.user.id, job[0].id)} value="favorite" style={{ background: "red" }}>Remove from favs</button>
+    btn = <button onClick={handleClick} style={{ background: "red" }} value="unfavorite" >Remove from favs</button>
   }
 
   return (
