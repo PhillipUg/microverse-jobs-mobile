@@ -24,3 +24,14 @@ body {
   background-color: #16161f25;
   height: 100%;
 }
+
+.navbar {
+  display: flex;
+  border: 1px solid red;
+}
+
+.navbar li {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px 10px;
+}
