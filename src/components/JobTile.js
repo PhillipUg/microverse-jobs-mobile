@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './JobTile.module.css';
+import styles from '../assets/styles/JobTile.module.css';
 
 
 const JobTile = ({ job, removeJob }) => (

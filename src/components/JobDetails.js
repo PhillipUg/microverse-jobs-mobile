@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { JobContext } from '../contexts/JobContext';
-import styles from './JobDetails.module.css';
+import styles from '../assets/styles/JobDetails.module.css';
 import { Redirect } from 'react-router-dom'
 import AuthService from '../services/authService';
 import axios from 'axios'
