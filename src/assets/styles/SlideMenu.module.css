@@ -68,3 +68,7 @@
 .slide_menu {
   left: -8px;
 }
+
+.hide {
+  display: none;
+}
