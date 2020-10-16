@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import JobList from './components/JobList';
@@ -10,16 +10,28 @@ import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import JobContextProvider from './contexts/JobContext';
 import styles from './assets/styles/SlideMenu.module.css'
+import AuthService from './services/authService';
 
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(undefined)
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) setCurrentUser(user);
+  }, [])
 
   const [slideMenu, setSlideMenu] = useState({ slideMenu: false })
 
   let slideClass;
   slideMenu.slideMenu
-    ? slideClass = `slideInLeft ${styles.slide_menu}`
-    : slideClass = 'slideInRight';
+    ? slideClass = styles.slide_menu
+    : slideClass = '';
+
+  let hideClass;
+  !currentUser
+    ? hideClass = styles.hide
+    : hideClass = "";
 
   const handleClick = () => {
     setSlideMenu({ slideMenu: !slideMenu.slideMenu })
@@ -29,7 +41,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
-        <div className={styles.main_container}>
+        <div className={styles.main_container + " " + hideClass}>
           <span type="button" onClick={handleClick}>
             <i className="fas fa-bars"></i>
           </span>
@@ -44,7 +56,6 @@ function App() {
           <SlideMenu slideClass={slideClass} handleClick={handleClick} />
         </div>
 
-        {/* <Navbar handleClick={handleClick} /> */}
         <Switch>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
