@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 import JobList from './components/JobList';
 import JobDetails from './components/JobDetails';
 import SlideMenu from './components/SlideMenu';
@@ -12,6 +13,7 @@ import AuthService from './services/authService';
 
 
 function App() {
+  const history = createBrowserHistory()
   const [currentUser, setCurrentUser] = useState(undefined)
 
   useEffect(() => {
@@ -35,8 +37,17 @@ function App() {
     setSlideMenu({ slideMenu: !slideMenu.slideMenu })
   }
 
+  let btn;
+  if (history.location.pathname.includes('/jobs/')) {
+    btn = <span onClick={history.goBack}><i className="fas fa-angle-left" ></i></span>
+  } else {
+    btn = <span onClick={handleClick}><i className="fas fa-bars"></i></span>
+  }
+
+
   return (
     <div className="App">
+      <div className="ear-piece"></div>
       <div className={styles.status_bar}>
         <span><i className="fas fa-signal"></i><i className="fas fa-wifi"></i></span>
         <span>4:21 PM</span>
@@ -45,13 +56,13 @@ function App() {
       <BrowserRouter>
 
         <div className={styles.main_container + " " + hideClass}>
-          <span type="button" onClick={handleClick}>
-            <i className="fas fa-bars"></i>
-          </span>
+          {btn}
+
           <span>
             <Link to={"/"}>
-              Jobs
-          </Link>
+              {history.location.pathname === '/' ? "Jobs" : history.location.pathname === '/user-jobs' ? "Favorites" : "Job Details"}
+
+            </Link>
           </span>
           <span>
             <i className="fas fa-search"></i>
@@ -63,10 +74,13 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/" component={JobList} />
-          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/user-jobs" component={Favorites} />
           <Route exact path="/jobs/:id" component={JobDetails} />
         </Switch>
       </BrowserRouter>
+      <div className='navigation'>
+        <a href="/"><div></div></a>
+      </div>
     </div >
   );
 }
