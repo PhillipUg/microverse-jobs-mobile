@@ -7,12 +7,12 @@ import FavoriteService from '../services/favoriteService';
 import authHeader from '../services/authHeader';
 
 const JobDetails = (props) => {
-  
+
   const user = AuthService.getCurrentUser();
-  
+
   const [job, setJob] = useState(null)
   const [favorited, setFavorited] = useState(null)
-  
+
   const id = parseInt(props.match.params.id)
   useEffect(() => {
     axios.get(`https://microverse-jobs-api.herokuapp.com/api/v1/jobs/${id}`, { headers: authHeader() })
@@ -32,7 +32,7 @@ const JobDetails = (props) => {
       FavoriteService.updateFav(user.user.id, job.id)
     } else {
       e.target.value = "favorite"
-      e.target.style.background = "yellow"
+      e.target.style.background = "#ED5C28"
       e.target.textContent = "Add to favorites"
       FavoriteService.updateFav(user.user.id, job.id)
     }
@@ -43,26 +43,48 @@ const JobDetails = (props) => {
   if (favorited === null) {
     btn = ""
   } else if (favorited === false) {
-    btn = <button onClick={handleClick} style={{ background: "yellow" }} value="favorite" >Add to favs</button>
+    btn = <button onClick={handleClick} style={{ background: "#ED5C28" }} value="favorite" >Add to favorites</button>
   } else {
-    btn = <button onClick={handleClick} style={{ background: "red" }} value="unfavorite" >Remove from favs</button>
+    btn = <button onClick={handleClick} style={{ background: "red" }} value="unfavorite" >Remove from favorites</button>
   }
 
   return (
 
     <div className={styles.details}>
-
-      <div>
-        <span>Company:</span>
-        {job && job.company}
-      </div>
-      <div>
-        <span>Position:</span>
-        {job && job.position}
-      </div>
-      <div>
-        <span>Description:</span>
-        {job && job.description}
+      <div className={styles.wrapper}>
+        <div className={styles.img}><img src={require(`../assets/images/logo${id}.jpg`)} alt="company logo" /></div>
+        <div>
+          <span>Company:</span>
+          {job && job.company}
+        </div>
+        <div>
+          <span>Position:</span>
+          {job && job.position}
+        </div>
+        <div>
+          <span>Salary:</span>
+          {job && job.salary}
+        </div>
+        <div>
+          <span>Location:</span>
+          {job && job.location}
+        </div>
+        <div>
+          <span>About {job && job.company}</span>
+          {job && job.description}
+        </div>
+        <div>
+          <span>Description</span>
+          {job && job.description}
+        </div>
+        <div>
+          <span>Requirements</span>
+          {job && job.description}
+        </div>
+        <div>
+          <span>Benefits</span>
+          {job && job.description}
+        </div>
       </div>
       {btn}
 
