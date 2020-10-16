@@ -1,0 +1,70 @@
+.sliding_menu {
+  position: absolute;
+  top: 0px;
+  left: -248px;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 150px;
+  height: 67vh;
+  padding: 8px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-size: 1.5em;
+}
+
+.sliding_menu button {
+  background-color: black;
+    display: inline-block;
+    border: none;
+    color: #fff;
+    text-align: left;
+    font-size: 24px;
+    text-align: end;
+  }
+
+.sliding_menu ul li {
+  list-style: none;
+  padding: 5px 0;
+  border: 1px solid red;
+}
+
+.sliding_menu ul{
+  display: flex;
+  border: 1px solid yellow;
+  padding: 0;
+  flex-direction: column;
+}
+
+.sliding_menu ul a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main_container {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: #000000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main_container > button {
+    position: relative;
+    top: 50%;
+    transform: translate(0%, -50%);
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+  }
+
+.main_container a{
+  color: #fff;
+  text-decoration: none;
+}
+
+.slide_menu {
+  left: -8px;
+}
