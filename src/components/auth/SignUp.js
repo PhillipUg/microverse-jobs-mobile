@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import AuthService from '../../services/authService';
 import { Redirect } from 'react-router-dom'
+import styles from '../../assets/styles/auth.module.css'
+import { Link } from 'react-router-dom';
+
 
 function SignUp(props) {
-  
+
   const [state, setState] = useState({
     username: "",
     password: ""
@@ -31,8 +34,10 @@ function SignUp(props) {
   if (user) return <Redirect to="/" />
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
+        <h1>Sign up</h1>
+        <p>Hello there! Sign up and start your job hunt</p>
         <input type="username"
           id="username"
           placeholder="Enter username"
@@ -46,7 +51,13 @@ function SignUp(props) {
           value={state.password}
           onChange={handleChange}
         />
-        <button>Sign Up</button>
+        <div>
+          <button>Sign Up</button>
+          <Link to={'/signin'}>
+            <button>Sign In</button>
+          </Link>
+        </div>
+
       </form>
     </div>
   )
