@@ -19,13 +19,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #16161f25;
+  background-color: #F7F5FA;
   height: 100vh;
   width: 100vw;
 }
 
 body {
-  padding-top: 5%;
+  padding-top: 2%;
 }
 
 .navbar {
@@ -40,12 +40,39 @@ body {
 }
 
 .App {
-  width: 20vw;
+  width: 330px;
   border: 5px solid #000;
-  height: 70vh;
+  height: 600px;
   overflow: hidden;
   margin: 0 auto;
   border-radius: 1rem;
   padding: 1rem 0.5rem;
+  position: relative;
+}
+
+.navigation {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  bottom: 0;
+  background-image: url('../images/navigation.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+}
+
+.navigation a {
+  flex: 1;
+}
+
+.ear-piece {
+  border: 3px solid #000;
+  position: absolute;
+  top: 0;
+  width: 60px;
+  margin-left: 39%;
+  border-radius: 0 0 1rem 1rem;
 }
 
