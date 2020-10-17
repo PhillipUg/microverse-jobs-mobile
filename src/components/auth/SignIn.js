@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 function SignIn(props) {
   const [state, setState] = useState({
     username: "",
-    password: ""
+    password: "",
   })
+
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     const { id, value } = e.target
@@ -22,9 +24,13 @@ function SignIn(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     AuthService.login(state.username, state.password)
-      .then(() => {
-        props.history.push('/')
-        window.location.reload();
+      .then((res) => {
+        if (res.error) {
+          setError(res.error)
+        } else {
+          props.history.push('/')
+          window.location.reload();
+        }
       })
   }
 
@@ -35,8 +41,9 @@ function SignIn(props) {
   return (
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
-        <h1>Sign in</h1>
+        <p >Sign in</p>
         <p>Hello there! Sign in and start your job hunt</p>
+        <p>{error && `! ${error}`}</p>
         <input type="username"
           id="username"
           placeholder="Enter username"

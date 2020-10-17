@@ -12,6 +12,8 @@ function SignUp(props) {
     password: ""
   })
 
+  const [error, setError] = useState('')
+
   const handleChange = (e) => {
     const { id, value } = e.target
     setState(prevState => ({
@@ -23,9 +25,13 @@ function SignUp(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     AuthService.register(state.username, state.password)
-      .then(() => {
-        props.history.push('/')
-        window.location.reload();
+      .then((res) => {
+        if (res.error) {
+          setError(res.error)
+        } else {
+          props.history.push('/')
+          window.location.reload();
+        }
       })
   }
 
@@ -36,8 +42,10 @@ function SignUp(props) {
   return (
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
-        <h1>Sign up</h1>
+        <p>Sign up</p>
         <p>Hello there! Sign up and start your job hunt</p>
+        <p>{error && `! ${error}`}</p>
+
         <input type="username"
           id="username"
           placeholder="Enter username"
