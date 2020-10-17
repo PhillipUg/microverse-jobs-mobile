@@ -46,9 +46,9 @@ const SlideMenu = ({ slideClass, handleClick }) => {
           Help
         </li>
         <li >
-          <a href="/signin" onClick={AuthService.logout}>
+          <Link to={"/signin"} onClick={AuthService.logout}>
             LogOut
-              </a>
+              </Link>
         </li>
       </ul>
     </div>
