@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import AuthService from '../services/authService';
 import authHeader from '../services/authHeader';
 import styles from '../assets/styles/JobList.module.css'
+import axios from 'axios';
 
 const JobList = () => {
 
@@ -11,9 +12,8 @@ const JobList = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
-    fetch('https://microverse-jobs-api.herokuapp.com/api/v1/jobs', { headers: authHeader() })
-      .then((res) => res.json())
-      .then(data => setJobs(data))
+    axios.get('https://microverse-jobs-api.herokuapp.com/api/v1/jobs', { headers: authHeader() })
+      .then(res => setJobs(res.data))
   }, [])
 
   const user = AuthService.getCurrentUser();
