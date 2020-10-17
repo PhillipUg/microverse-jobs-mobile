@@ -1,6 +1,6 @@
 # Microverse Jobs
 
-A curated catalog of remote entry level jobs best suited for bootcamp students with little to no previous tech-related working experience
+A mobile web app for finding jobs online. Its specifically tailored to software development jobs best suited for bootcamp students with little to no previous tech-related working experience.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/558a8bdd-105f-4337-ae22-fb46ae334f0a/deploy-status)](https://app.netlify.com/sites/microverse-jobs/deploys)
 
@@ -10,7 +10,7 @@ A curated catalog of remote entry level jobs best suited for bootcamp students w
   </a>
 
   <h2 align="center">Microverse Jobs</h2>
-  <h3 align="center">Built with React and Redux</h3>
+  <h3 align="center">Built with React (Using React Hooks)</h3>
 
   <p align="center">
    <a href="https://microverse-jobs.netlify.app/">View Live Demo</a>
@@ -22,22 +22,51 @@ A curated catalog of remote entry level jobs best suited for bootcamp students w
 </p>
 
 ## About this project
-This is a single page application built with React and Redux. This Application consumes the Github Jobs Api. I use the Fetch Api to get jobs data and i store it in the redux store. The retrieved data can be filtered using a Filter stateless component. It is from the redux store that i then supply the data to various components. 
+This is a mobile web app for finding jobs online built with React (Using React Hooks to manage state).
+
+This Application is built as a front end app consuming a Ruby on Rails API ([Microverse Jobs API](https://github.com/PhillipUg/microverse-jobs-api)) separately deployed to Heroku. 
+
+### End Points
+This application consumes a couple of endpoints served by an api accessible online at https://microverse-jobs-api.herokuapp.com/ as the base Url;
+
+#### POST
+- /api/v1/users - (create a user - signup)
+- /api/v1/login - (create a session - signin)
+
+#### GET
+- /api/v1/jobs - (fetch all jobs)
+- /api/v1/jobs/:id - (fetch a specific job)
+- /api/v1/user-jobs - (fetch all jobs favorited by logged in user)
+
+#### PUT
+- /api/v1/favorites/:id - (update favorited status when user adds/removes job to/from favorites)
+
+I use Axios to fetch jobs, user and favorites data and then use React Hooks to manage the data in various components.
+
+### Usage
+- A user can create an account(signup)
+- A user can signin(login) and logout
+- A user can peruse through jobs by clicking either the left or right navigation arrows
+- A user can click on any of the jobs to see more details
+- On the details page, a user can click the button to either add or remove that particular jon from/to favorites
+- A user can see their favorited jobs
 
 ## Screenshots
 
-![ScreenShot](./public/screen.png)
+<img src="./public/screen1.png" alt="microverse-jobs" width="400" height="450"><img src="./public/screen4.png" alt="microverse-jobs" width="400" height="450">
 <br>
 <br>
-![ScreenShot](./public/screen1.png)
+<img src="./public/scren3.png" alt="microverse-jobs" width="400" height="450"><img src="./public/screen2.png" alt="microverse-jobs" width="400" height="450">
+
 
 ## Built With
 
-- React.js
-- Redux / Redux-Thunk
-- API (Github Jobs)
-- Fetch Api
-- Netlify
+- ReactJs
+- React Hooks
+- Rails API 
+- Axios
+- Netlify (For Front-end)
+- Heroku (For Back-end)
 - CSS (Modules)
 - HTML
 - Webpack
@@ -57,23 +86,23 @@ Have a browser installed
 
 ### Setup
 
-Clone this repo with https://git@github.com/phillipug/microverse-jobs.git
+Clone [this repo](https://git@github.com/phillipug/microverse-jobs.git)
 
 ### Usage - Follow these
 
 1. <code>cd</code> into the project directory
 2. run <code>npm install</code>
+2. run <code>npm start</code>
 3. Navigate to [localhost:3000](http://localhost:3000) in your browser.
 4. Enjoy :smiley:
 
 ## Future Updates
 - fetch data from multiple apis
-- add pagination
-- add more filter types e.g filter by location and job title etc..
-- Add login and sign up features so users are able to save jobs
+- enable search to enable filtering by location, job title etc..
+- add notifications and messages features
 etc..
 
-:bust_in_silhouette: **Phillip Musiime**
+:bust_in_silhouette: **Contacts**
 
 - LinkedIn: [Phillip Musiime](https://www.linkedin.com/in/phillip-musiime/)
 - GitHub: [PhillipUg](https://github.com/PhillipUg)

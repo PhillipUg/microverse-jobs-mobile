@@ -49,12 +49,7 @@
   display: none;
 }
 
-.img {
-  background-image: url('../images/job.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.img img {
+  width: 100%;
   border-radius: 0.5rem;
-  height: 200px;
-  /* width:; */
 }
