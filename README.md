@@ -2,7 +2,7 @@
 
 A mobile web app for finding jobs online. Its specifically tailored to software development jobs best suited for bootcamp students with little to no previous tech-related working experience.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/558a8bdd-105f-4337-ae22-fb46ae334f0a/deploy-status)](https://app.netlify.com/sites/microverse-jobs/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1d69bc99-71f5-43ff-b14c-cf70b8db2915/deploy-status)](https://app.netlify.com/sites/microverse-jobs-mobile/deploys)
 
 <p align="center">
   <a>
