@@ -17,12 +17,13 @@
   border-radius: 0.5rem;
   overflow: hidden;
   height: 200px;
+  margin-bottom: 10px;
 }
 
 .logo img {
   width: 100%;
-  height: auto;
-  padding-right: 10px;
+  /* height: auto; */
+  /* padding-right: 10px; */
 }
 
 .btn_container {
@@ -58,4 +59,18 @@
 .card p {
   font-weight: bold;
   font-size: 12px;
+}
+
+.card > div:last-child{
+  color: grey;
+}
+
+.card > div:nth-child(4), .card > div:nth-child(5){
+  /* border: 1px solid #000; */
+  color: grey;
+}
+
+.card > div:nth-child(3){
+  /* border: 1px solid #000; */
+  font-weight: bold;
 }
