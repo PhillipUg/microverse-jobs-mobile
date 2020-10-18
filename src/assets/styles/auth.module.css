@@ -3,7 +3,7 @@
   position: absolute;
   height: 100%;
   left: 0;
-  background: linear-gradient(to bottom, #f7f5fa,#f7f5fab2), url('../images/bg-auth.jpg');
+  background: linear-gradient(to bottom, #f7f5fa, #f7f5fab2), url('../images/bg-auth.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -31,33 +31,34 @@
 }
 
 .wrapper form input:focus {
-  border: 1px solid #ED5C28;
+  border: 1px solid #ed5c28;
 }
 
 .wrapper form input[type=password] {
-  color: #ED5C28;
+  color: #ed5c28;
 }
 
 .wrapper form p {
   padding: 0 30px;
   text-align: center;
 }
-.wrapper form p:first-child{
+
+.wrapper form p:first-child {
   font-weight: 300;
   font-size: 35px;
 }
 
-.wrapper form p:nth-child(2){
+.wrapper form p:nth-child(2) {
   color: rgba(0, 0, 0, 0.699);
 }
 
-.wrapper form p:nth-child(3){
-color: red;
-font-size: 12px;
+.wrapper form p:nth-child(3) {
+  color: red;
+  font-size: 12px;
 }
 
 .wrapper form button {
-  background: #ED5C28;
+  background: #ed5c28;
   padding: 12px 20px;
   border: none;
   border-radius: 2rem;

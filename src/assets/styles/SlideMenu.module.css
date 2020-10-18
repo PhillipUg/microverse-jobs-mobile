@@ -1,6 +1,6 @@
 .sliding_menu {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: -165px;
   display: flex;
   flex-flow: column nowrap;
@@ -16,39 +16,46 @@
   background-color: transparent;
   color: grey;
   border: 1px solid rgba(128, 128, 128, 0.24);
-    display: inline-block;
-    /* border: none; */
-    position: absolute;
-    font-size: 24px;
-    right: 10px;
-    top: 10px;
-  }
+  display: inline-block;
+  position: absolute;
+  font-size: 24px;
+  right: 10px;
+  top: 10px;
+}
 
 .sliding_menu ul li {
   list-style: none;
   padding: 7px 20px;
-  /* border: 1px solid red; */
 }
 
-.sliding_menu ul li:last-child > a{
+.sliding_menu ul li:hover {
+  border-left: 2px solid #ed5c28;
+  color: grey;
+}
+
+.main_container a {
+  color: #000;
+  text-decoration: none;
+}
+
+.sliding_menu ul a {
+  text-decoration: none;
+}
+
+.sliding_menu ul li:last-child > a {
   color: grey;
 }
 
 .sliding_menu ul li:nth-child(n + 5) {
-  /* border: 1px solid red; */
-  color: grey;
-}
-.sliding_menu ul li:nth-child(n + 5):hover{
-  border: none;
-}
-.sliding_menu ul li:hover {
-  border-left: 2px solid #ED5C28;
   color: grey;
 }
 
-.sliding_menu ul{
+.sliding_menu ul li:nth-child(n + 5):hover {
+  border: none;
+}
+
+.sliding_menu ul {
   display: flex;
-  /* border: 1px solid yellow; */
   padding: 0;
   flex-direction: column;
   height: 100%;
@@ -62,17 +69,11 @@
   color: grey;
 }
 
-.sliding_menu ul a {
-  /* color: #fff; */
-  text-decoration: none;
-}
-
 .sliding_menu hr {
   border: 0.5px solid rgba(128, 128, 128, 0.26);
   border-bottom: none;
   width: 80%;
   margin-top: auto;
-  /* margin-bottom: 30px; */
 }
 
 .main_container {
@@ -88,11 +89,6 @@
   font-size: 18px;
 }
 
-.main_container a{
-  color: #000;
-  text-decoration: none;
-}
-
 .main_container span {
   padding: 0 10px;
 }
@@ -104,7 +100,6 @@
 
 .slide_menu {
   left: -8px;
-  
 }
 
 .hide {
@@ -116,11 +111,9 @@
   justify-content: space-between;
   align-items: center;
   font-size: 11px;
-  /* background: #000; */
-  /* color: #fff; */
 }
 
-.status_bar span > *{
+.status_bar span > * {
   padding: 0 2px;
 }
 

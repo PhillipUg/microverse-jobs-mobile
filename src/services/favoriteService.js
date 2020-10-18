@@ -1,21 +1,14 @@
-import axios from "axios";
-import authHeader from '../services/authHeader'
+import axios from 'axios';
+import authHeader from './authHeader';
 
-const API_URL = "https://microverse-jobs-api.herokuapp.com/api/v1/";
+const API_URL = 'https://microverse-jobs-api.herokuapp.com/api/v1/';
 
-const updateFav = (user_id, job_id) => {
-  return axios.put(API_URL + `favorites/${job_id}`, {
-    user_id,
-    job_id,
-  }, { headers: authHeader() })
-    .then((response) => {
-      if (response.data) {
-        localStorage.setItem("favorited", JSON.stringify(response.data));
-      }
-      return response.data;
-    });
-};
+const updateFav = (userId, jobId) => axios.put(`${API_URL}favorites/${jobId}`, {
+  userId,
+  jobId,
+}, { headers: authHeader() })
+  .then(response => response.data);
 
 export default {
-  updateFav
+  updateFav,
 };
