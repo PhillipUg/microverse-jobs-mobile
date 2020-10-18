@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import AuthService from '../services/authService';
 import styles from '../assets/styles/SlideMenu.module.css'
 
@@ -24,16 +24,16 @@ const SlideMenu = ({ slideClass, handleClick }) => {
         </div>
       </div>
       <ul>
-        <Link to={"/"}>
+        <a href="/">
           <li onClick={handleClick}>
             Dashboard
         </li>
-        </Link>
-        <Link to={"/user-jobs"}>
+        </a>
+        <a href="/user-jobs">
           <li onClick={handleClick}>
             Favorites
         </li>
-        </Link>
+        </a>
 
         <li>
           Notifications
@@ -46,9 +46,9 @@ const SlideMenu = ({ slideClass, handleClick }) => {
           Help
         </li>
         <li >
-          <Link to={"/signin"} onClick={AuthService.logout}>
+          <a href="/signin" onClick={AuthService.logout}>
             LogOut
-              </Link>
+              </a>
         </li>
       </ul>
     </div>

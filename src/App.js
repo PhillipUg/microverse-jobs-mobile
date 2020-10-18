@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import JobList from './components/JobList';
@@ -53,23 +53,23 @@ function App() {
         <span>4:21 PM</span>
         <span>100% <i className="fas fa-battery-full"></i></span>
       </div>
+
+      <div className={styles.main_container + " " + hideClass}>
+        {btn}
+
+        <span>
+          <a href='/'>
+            {history.location.pathname === '/' ? "Jobs" : history.location.pathname === '/user-jobs' ? "Favorites" : "Job Details"}
+
+          </a>
+        </span>
+        <span>
+          <i className="fas fa-search"></i>
+        </span>
+        <SlideMenu slideClass={slideClass} handleClick={handleClick} />
+      </div>
+
       <BrowserRouter>
-
-        <div className={styles.main_container + " " + hideClass}>
-          {btn}
-
-          <span>
-            <Link to={"/"}>
-              {history.location.pathname === '/' ? "Jobs" : history.location.pathname === '/user-jobs' ? "Favorites" : "Job Details"}
-
-            </Link>
-          </span>
-          <span>
-            <i className="fas fa-search"></i>
-          </span>
-          <SlideMenu slideClass={slideClass} handleClick={handleClick} />
-        </div>
-
         <Switch>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
