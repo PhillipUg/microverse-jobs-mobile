@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Link, BrowserRouter, Switch, Route,
 } from 'react-router-dom';
-
-import { createBrowserHistory } from 'history';
 import JobList from './components/JobList';
 import JobDetails from './components/JobDetails';
 import SlideMenu from './components/SlideMenu';
@@ -14,7 +12,6 @@ import styles from './assets/styles/SlideMenu.module.css';
 import AuthService from './services/authService';
 
 function App() {
-  const history = createBrowserHistory();
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
@@ -25,21 +22,11 @@ function App() {
   const [slideMenu, setSlideMenu] = useState({ slideMenu: false });
 
   let slideClass;
-  slideMenu.slideMenu ? slideClass = styles.slide_menu : slideClass = ''; {/*eslint-disable-line*/}
-
-  let hideClass;
-  !currentUser ? hideClass = styles.hide : hideClass = ''; {/*eslint-disable-line*/ }
+  slideMenu.slideMenu ? slideClass = styles.slide_menu : slideClass = ''; {/*eslint-disable-line*/ }
 
   const handleClick = () => {
     setSlideMenu({ slideMenu: !slideMenu.slideMenu });
   };
-
-  let btn;
-  if (history.location.pathname.includes('/jobs/')) {
-    btn = <span onClick={history.goBack}><i className="fas fa-angle-left" /></span>; {/*eslint-disable-line*/ }
-  } else {
-    btn = <span onClick={handleClick}><i className="fas fa-bars" /></span>; {/*eslint-disable-line*/ }
-  }
 
   return (
     <div className="App">
@@ -57,25 +44,29 @@ function App() {
       </div>
       <BrowserRouter>
 
-        <div className={`${styles.main_container} ${hideClass}`}>
-          {btn}
+        {
+        currentUser && (
+        <div className={styles.main_container}>
+          <span onClick={handleClick}><i className="fas fa-bars" /></span> {/*eslint-disable-line*/}
 
           <span>
             <Link to="/">
-              {history.location.pathname === '/' ? 'Jobs' : history.location.pathname === '/user-jobs' ? 'Favorites' : 'Job Details'} {/*eslint-disable-line*/}
-
+              Jobs
             </Link>
           </span>
           <span>
             <i className="fas fa-search" />
           </span>
-          <SlideMenu slideClass={slideClass} handleClick={handleClick} />
+          <SlideMenu slideClass={slideClass} currentUser={currentUser} handleClick={handleClick} />
         </div>
+        )
+        }
 
         <Switch>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/" component={JobList} />
+          <Route exact path="/jobs" component={JobList} />
           <Route exact path="/user-jobs" component={Favorites} />
           <Route exact path="/jobs/:id" component={JobDetails} />
         </Switch>
