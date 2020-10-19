@@ -40,7 +40,7 @@ const JobList = () => {
       <div className={styles.wrapper}>
         <i className="fas fa-angle-left" onClick={prevSlide} />{/*eslint-disable-line*/}
         <div className={styles.carousel}>
-          <JobTile key={currentIndex} job={jobs[currentIndex]} />
+          <JobTile job={jobs[currentIndex]} />
         </div>
         <i className="fas fa-angle-right" onClick={nextSlide} />{/*eslint-disable-line*/}
       </div>

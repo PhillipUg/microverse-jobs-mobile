@@ -3,19 +3,25 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../assets/styles/JobTile.module.css';
 
-const JobTile = ({ job }) => (
-  <Link className={styles.link} to={`/jobs/${job && job.id}`}>
-    <div className={styles.card}>
-      <div className={styles.logo}>{job && <img src={require(`../assets/images/logo${job.id}.jpg`)} alt="company logo" />}</div> {/*eslint-disable-line*/}
-      <div>{job && job.company}</div>
-      <div>{job && job.position}</div>
-      <div>{job && job.salary}</div>
-      <div>{job && job.location}</div>
-      <p>Job Description</p>
-      <div>{job && job.description}</div>
-    </div>
-  </Link>
-);
+const JobTile = ({ job }) => {
+  const {
+    id, position, description, salary, company, location,
+  } = job || {};
+
+  return (
+    <Link className={styles.link} to={`/jobs/${id}`}>
+      <div className={styles.card}>
+        <div className={styles.logo}>{job && <img src={require(`../assets/images/logo${id}.jpg`)} alt="company logo" />}</div> {/*eslint-disable-line*/}
+        <div>{company}</div>
+        <div>{position}</div>
+        <div>{salary}</div>
+        <div>{location}</div>
+        <p>Job Description</p>
+        <div>{description}</div>
+      </div>
+    </Link>
+  );
+};
 
 JobTile.propTypes = {
   job: PropTypes.objectOf(PropTypes.object).isRequired,
