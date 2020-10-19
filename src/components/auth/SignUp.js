@@ -60,7 +60,7 @@ function SignUp(props) {
           onChange={handleChange}
         />
         <div>
-          <button type="button">Sign Up</button>
+          <button type="submit">Sign Up</button>
           <Link to="/signin">
             <button type="button">Sign In</button>
           </Link>

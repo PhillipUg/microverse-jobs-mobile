@@ -59,7 +59,7 @@ function SignIn(props) {
           onChange={handleChange}
         />
         <div>
-          <button type="button"> Sign In </button>
+          <button type="submit" onClick={handleSubmit}> Sign In </button>
           <Link to="/signup">
             <button type="button"> Sign Up </button>
           </Link>
