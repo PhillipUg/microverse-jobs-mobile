@@ -10,6 +10,7 @@
   background-color: #e6e5e9;
   font-size: 1em;
   z-index: 99;
+  transition: left 1s;
 }
 
 .sliding_menu button {
@@ -100,6 +101,7 @@
 
 .slide_menu {
   left: -8px;
+  transition: left 1s;
 }
 
 .hide {

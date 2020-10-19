@@ -6,29 +6,19 @@
   align-items: center;
   height: 400px;
   overflow: hidden;
-
-  /* border: 1px solid red; */
   margin-top: 20px;
 }
 
 .wrapper i {
   background: rgba(95, 92, 92, 0.301);
-
-  /* border: 1px solid green; */
   height: 50px;
   width: 30px;
-
-  /* flex: 0.5; */
   color: rgba(255, 255, 255, 0.534);
   position: absolute;
   font-size: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* padding: 10px; */
-
-  /* line-height: 380px; */
   text-align: center;
 }
 
@@ -42,15 +32,12 @@
 
 .carousel {
   background: #fff;
-
-  /* border: 1px solid yellow; */
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
 .counter {
-  /* border: 1px solid #000; */
   text-align: center;
   margin-top: 20px;
 }
