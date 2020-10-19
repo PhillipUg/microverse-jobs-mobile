@@ -28,7 +28,6 @@ const login = (username, password) => axios
 
 const logout = () => {
   localStorage.removeItem('user');
-  // window.location.reload()
 };
 
 const getCurrentUser = () => JSON.parse(localStorage.getItem('user'));
