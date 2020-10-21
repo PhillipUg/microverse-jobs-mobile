@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import AuthService from '../services/authService';
 import styles from '../assets/styles/SlideMenu.module.css';
 
-const SlideMenu = ({ slideClass, handleClick, currentUser }) => (
+const SlideMenu = ({
+  slideClass, handleClick, currentUser, handleUser,
+}) => (
   <div className={`${styles.sliding_menu} ${slideClass}`}>
     <button type="button" onClick={handleClick}>
       <i className="fas fa-arrow-left" />
@@ -20,7 +22,7 @@ const SlideMenu = ({ slideClass, handleClick, currentUser }) => (
       <li>Messages</li>
       <hr />
       <li>Help</li>
-      <Link to="/signin" onClick={() => { AuthService.logout(); handleClick(); }}>
+      <Link to="/signin" onClick={() => { AuthService.logout(); handleClick(); handleUser(); }}>
         <li>LogOut</li>
       </Link>
     </ul>
@@ -30,12 +32,14 @@ const SlideMenu = ({ slideClass, handleClick, currentUser }) => (
 SlideMenu.propTypes = {
   slideClass: PropTypes.string,
   handleClick: PropTypes.func,
+  handleUser: PropTypes.func,
   currentUser: PropTypes.objectOf(PropTypes.string),
 };
 
 SlideMenu.defaultProps = {
   slideClass: '',
   handleClick: undefined,
+  handleUser: undefined,
   currentUser: null,
 };
 
