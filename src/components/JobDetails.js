@@ -49,7 +49,7 @@ const JobDetails = ({ match }) => {
 
   return (
 
-    <div className={styles.details}>
+    <section className={styles.details}>
       <div className={styles.wrapper}>
         <div className={styles.img}><img src={require(`../assets/images/logo${id}.jpg`)} alt="company logo" /></div> {/*eslint-disable-line*/}
         <div>
@@ -90,7 +90,7 @@ const JobDetails = ({ match }) => {
       </div>
       {btn}
 
-    </div>
+    </section>
   );
 };
 

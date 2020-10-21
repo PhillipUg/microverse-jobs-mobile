@@ -33,9 +33,9 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <main className="App">
       <div className="ear-piece" />
-      <div className={styles.status_bar}>
+      <header className={styles.status_bar}>
         <span>
           <i className="fas fa-signal" />
           <i className="fas fa-wifi" />
@@ -45,12 +45,12 @@ function App() {
           100%
           <i className="fas fa-battery-full" />
         </span>
-      </div>
+      </header>
       <BrowserRouter>
 
         {
           currentUser && (
-            <div className={styles.main_container}>
+            <nav className={styles.main_container}>
               <span onClick={handleClick}><i className="fas fa-bars" /></span> {/*eslint-disable-line*/}
 
               <span>
@@ -67,7 +67,7 @@ function App() {
                 handleClick={handleClick}
                 handleUser={handleUser}
               />
-            </div>
+            </nav>
           )
         }
 
@@ -83,7 +83,7 @@ function App() {
       <div className="navigation">
         <a href="/"></a> {/*eslint-disable-line*/}
       </div>
-    </div>
+    </main>
   );
 }
 

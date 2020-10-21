@@ -36,7 +36,7 @@ const JobList = () => {
   };
 
   return (
-    <div>
+    <section>
       <div className={styles.wrapper}>
         <i className="fas fa-angle-left" onClick={prevSlide} />{/*eslint-disable-line*/}
         <div className={styles.carousel}>
@@ -45,7 +45,7 @@ const JobList = () => {
         <i className="fas fa-angle-right" onClick={nextSlide} />{/*eslint-disable-line*/}
       </div>
       <div className={styles.counter}>{`${currentIndex + 1}/${jobs.length}`}</div>
-    </div>
+    </section>
   );
 };
 

@@ -10,7 +10,7 @@ const JobTile = ({ job }) => {
 
   return (
     <Link className={styles.link} to={`/jobs/${id}`}>
-      <div className={styles.card}>
+      <section className={styles.card}>
         <div className={styles.logo}>{job && <img src={require(`../assets/images/logo${id}.jpg`)} alt="company logo" />}</div> {/*eslint-disable-line*/}
         <div>{company}</div>
         <div>{position}</div>
@@ -18,7 +18,7 @@ const JobTile = ({ job }) => {
         <div>{location}</div>
         <p>Job Description</p>
         <div>{description}</div>
-      </div>
+      </section>
     </Link>
   );
 };

@@ -7,7 +7,7 @@ import styles from '../assets/styles/SlideMenu.module.css';
 const SlideMenu = ({
   slideClass, handleClick, currentUser, handleUser,
 }) => (
-  <div className={`${styles.sliding_menu} ${slideClass}`}>
+  <section className={`${styles.sliding_menu} ${slideClass}`}>
     <button type="button" onClick={handleClick}>
       <i className="fas fa-arrow-left" />
     </button>
@@ -26,7 +26,7 @@ const SlideMenu = ({
         <li>LogOut</li>
       </Link>
     </ul>
-  </div>
+  </section>
 );
 
 SlideMenu.propTypes = {

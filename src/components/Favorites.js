@@ -36,7 +36,7 @@ const Favorites = () => {
   if (!user) return <Redirect to="/signin" />;
 
   return (
-    <div>
+    <section>
       {!jobs.length ? (
         <p style={{ textAlign: 'center', marginTop: '50%', color: 'grey' }}>
           No favorites yet!
@@ -53,7 +53,7 @@ const Favorites = () => {
           <div className={styles.counter}>{`${currentIndex + 1}/${jobs.length}`}</div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
