@@ -28,9 +28,15 @@ const SlideMenu = ({ slideClass, handleClick, currentUser }) => (
 );
 
 SlideMenu.propTypes = {
-  slideClass: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  currentUser: PropTypes.objectOf(PropTypes.object).isRequired,
+  slideClass: PropTypes.string,
+  handleClick: PropTypes.func,
+  currentUser: PropTypes.objectOf(PropTypes.string),
+};
+
+SlideMenu.defaultProps = {
+  slideClass: '',
+  handleClick: undefined,
+  currentUser: null,
 };
 
 export default SlideMenu;

@@ -13,7 +13,7 @@ const JobDetails = ({ match }) => {
   const [job, setJob] = useState(null);
   const [favorited, setFavorited] = useState(null);
 
-  const id = parseInt(match.params.id, 10);
+  const id = parseInt(match && match.params.id, 10);
   useEffect(() => {
     axios.get(`https://microverse-jobs-api.herokuapp.com/api/v1/jobs/${id}`, { headers: authHeader() })
       .then(res => {
@@ -95,7 +95,11 @@ const JobDetails = ({ match }) => {
 };
 
 JobDetails.propTypes = {
-  match: PropTypes.objectOf(PropTypes.object).isRequired,
+  match: PropTypes.objectOf(PropTypes.string),
+};
+
+JobDetails.defaultProps = {
+  match: undefined,
 };
 
 export default JobDetails;

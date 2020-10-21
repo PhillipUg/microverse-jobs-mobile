@@ -24,7 +24,10 @@ const JobTile = ({ job }) => {
 };
 
 JobTile.propTypes = {
-  job: PropTypes.objectOf(PropTypes.object).isRequired,
+  job: PropTypes.objectOf(PropTypes.object),
 };
 
+JobTile.defaultProps = {
+  job: undefined,
+};
 export default JobTile;

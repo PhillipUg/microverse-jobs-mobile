@@ -72,7 +72,11 @@ function SignUp(props) {
 }
 
 SignUp.propTypes = {
-  history: PropTypes.func.isRequired,
+  history: PropTypes.string,
+};
+
+SignUp.defaultProps = {
+  history: '/',
 };
 
 export default SignUp;
