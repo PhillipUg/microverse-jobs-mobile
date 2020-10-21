@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import JobTile from './JobTile';
 import authHeader from '../services/authHeader';
 import styles from '../assets/styles/JobList.module.css';
+import AuthService from '../services/authService';
 
 const Favorites = () => {
   const [jobs, setJobs] = useState([]);
@@ -28,6 +30,10 @@ const Favorites = () => {
 
     setCurrentIndex(index);
   };
+
+  const user = AuthService.getCurrentUser();
+
+  if (!user) return <Redirect to="/signin" />;
 
   return (
     <div>
