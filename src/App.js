@@ -28,6 +28,10 @@ function App() {
     setSlideMenu({ slideMenu: !slideMenu.slideMenu });
   };
 
+  const handleUser = () => {
+    setCurrentUser(undefined);
+  };
+
   return (
     <div className="App">
       <div className="ear-piece" />
@@ -45,21 +49,26 @@ function App() {
       <BrowserRouter>
 
         {
-        currentUser && (
-        <div className={styles.main_container}>
-          <span onClick={handleClick}><i className="fas fa-bars" /></span> {/*eslint-disable-line*/}
+          currentUser && (
+            <div className={styles.main_container}>
+              <span onClick={handleClick}><i className="fas fa-bars" /></span> {/*eslint-disable-line*/}
 
-          <span>
-            <Link to="/">
-              Jobs
-            </Link>
-          </span>
-          <span>
-            <i className="fas fa-search" />
-          </span>
-          <SlideMenu slideClass={slideClass} currentUser={currentUser} handleClick={handleClick} />
-        </div>
-        )
+              <span>
+                <Link to="/">
+                  Jobs
+                </Link>
+              </span>
+              <span>
+                <i className="fas fa-search" />
+              </span>
+              <SlideMenu
+                slideClass={slideClass}
+                currentUser={currentUser}
+                handleClick={handleClick}
+                handleUser={handleUser}
+              />
+            </div>
+          )
         }
 
         <Switch>
