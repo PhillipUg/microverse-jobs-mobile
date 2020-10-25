@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { BeatLoader } from 'react-spinners';
 import JobTile from './JobTile';
-import authHeader from '../services/authHeader';
 import styles from '../assets/styles/JobList.module.css';
-import AuthService from '../services/authService';
+import { getData } from '../actions/favoritesActions';
+import { getCurrentUser } from '../actions/authActions';
 
 const Favorites = () => {
-  const [jobs, setJobs] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const { jobs, loading } = useSelector(state => ({
+    jobs: state.favorites.favorites,
+    loading: state.favorites.loading,
+  }));
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get('https://microverse-jobs-api.herokuapp.com/api/v1/user-jobs', { headers: authHeader() })
-      .then(data => setJobs(data.data));
-  }, []);
+    dispatch(getData());
+  }, [dispatch]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
     const lastIndex = jobs.length - 1;
@@ -31,12 +37,17 @@ const Favorites = () => {
     setCurrentIndex(index);
   };
 
-  const user = AuthService.getCurrentUser();
+  const user = getCurrentUser();
 
   if (!user) return <Redirect to="/signin" />;
 
   return (
     <section>
+      {loading && (
+      <div className="loading">
+        <BeatLoader loading={loading} />
+      </div>
+      )}
       {!jobs.length ? (
         <p style={{ textAlign: 'center', marginTop: '50%', color: 'grey' }}>
           No favorites yet!
