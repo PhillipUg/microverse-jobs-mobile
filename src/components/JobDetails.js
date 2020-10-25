@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { BeatLoader } from 'react-spinners';
 import styles from '../assets/styles/JobDetails.module.css';
-import AuthService from '../services/authService';
-import FavoriteService from '../services/favoriteService';
-import authHeader from '../services/authHeader';
+import { getJob } from '../actions/jobsActions';
+import { updateFav } from '../actions/favoritesActions';
+import { getCurrentUser } from '../actions/authActions';
 
 const JobDetails = ({ match }) => {
-  const user = AuthService.getCurrentUser();
-
-  const [job, setJob] = useState(null);
-  const [favorited, setFavorited] = useState(null);
-
+  const dispatch = useDispatch();
   const id = parseInt(match && match.params.id, 10);
+  const { job, loading, favorited } = useSelector(state => ({
+    job: state.job.job,
+    loading: state.job.loading,
+    favorited: state.job.favorited,
+  }));
+
+  const user = getCurrentUser();
+
   useEffect(() => {
-    axios.get(`https://microverse-jobs-api.herokuapp.com/api/v1/jobs/${id}`, { headers: authHeader() })
-      .then(res => {
-        setJob(res.data.job);
-        setFavorited(res.data.favorited);
-      });
-  }, [id]);
+    dispatch(getJob(id));
+  }, [dispatch, id]);
 
   if (!user) return <Redirect to="/signin" />;
 
@@ -29,12 +30,12 @@ const JobDetails = ({ match }) => {
       e.target.value = 'unfavorite';
       e.target.style.background = 'red';
       e.target.textContent = 'Remove from favorites';
-      FavoriteService.updateFav(user.user.id, job.id);
+      updateFav(user.user.id, id);
     } else {
       e.target.value = 'favorite';
       e.target.style.background = '#ED5C28';
       e.target.textContent = 'Add to favorites';
-      FavoriteService.updateFav(user.user.id, job.id);
+      updateFav(user.user.id, id);
     }
   };
 
@@ -48,8 +49,12 @@ const JobDetails = ({ match }) => {
   }
 
   return (
-
     <section className={styles.details}>
+      {loading && (
+      <div className="loading">
+        <BeatLoader loading={loading} />
+      </div>
+      )}
       <div className={styles.wrapper}>
         <div className={styles.img}><img src={require(`../assets/images/logo${id}.jpg`)} alt="company logo" /></div> {/*eslint-disable-line*/}
         <div>
