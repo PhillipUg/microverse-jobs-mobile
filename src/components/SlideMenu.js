@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import AuthService from '../services/authService';
 import styles from '../assets/styles/SlideMenu.module.css';
+import { logout } from '../actions/authActions';
 
 const SlideMenu = ({
-  slideClass, handleClick, currentUser, handleUser,
+  slideClass, handleClick, currentUser,
 }) => (
   <section className={`${styles.sliding_menu} ${slideClass}`}>
     <button type="button" onClick={handleClick}>
@@ -22,7 +22,7 @@ const SlideMenu = ({
       <li>Messages</li>
       <hr />
       <li>Help</li>
-      <Link to="/signin" onClick={() => { AuthService.logout(); handleClick(); handleUser(); }}>
+      <Link to="/signin" onClick={() => { logout(); handleClick(); }}>
         <li>LogOut</li>
       </Link>
     </ul>
@@ -32,14 +32,12 @@ const SlideMenu = ({
 SlideMenu.propTypes = {
   slideClass: PropTypes.string,
   handleClick: PropTypes.func,
-  handleUser: PropTypes.func,
   currentUser: PropTypes.objectOf(PropTypes.string),
 };
 
 SlideMenu.defaultProps = {
   slideClass: '',
   handleClick: undefined,
-  handleUser: undefined,
   currentUser: null,
 };
 
