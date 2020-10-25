@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Link, BrowserRouter, Switch, Route,
 } from 'react-router-dom';
@@ -9,15 +9,10 @@ import Favorites from './components/Favorites';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
 import styles from './assets/styles/SlideMenu.module.css';
-import AuthService from './services/authService';
+import { getCurrentUser } from './actions/authActions';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(undefined);
-
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
-    if (user) setCurrentUser(user);
-  }, []);
+  const user = getCurrentUser();
 
   const [slideMenu, setSlideMenu] = useState({ slideMenu: false });
 
@@ -26,10 +21,6 @@ function App() {
 
   const handleClick = () => {
     setSlideMenu({ slideMenu: !slideMenu.slideMenu });
-  };
-
-  const handleUser = () => {
-    setCurrentUser(undefined);
   };
 
   return (
@@ -49,7 +40,7 @@ function App() {
       <BrowserRouter>
 
         {
-          currentUser && (
+          user && (
             <nav className={styles.main_container}>
               <span onClick={handleClick}><i className="fas fa-bars" /></span> {/*eslint-disable-line*/}
 
@@ -63,9 +54,8 @@ function App() {
               </span>
               <SlideMenu
                 slideClass={slideClass}
-                currentUser={currentUser}
+                currentUser={user}
                 handleClick={handleClick}
-                handleUser={handleUser}
               />
             </nav>
           )
@@ -75,9 +65,8 @@ function App() {
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/" component={JobList} />
-          <Route exact path="/jobs" component={JobList} />
-          <Route exact path="/user-jobs" component={Favorites} />
-          <Route exact path="/jobs/:id" component={JobDetails} />
+          <Route path="/user-jobs" component={Favorites} />
+          <Route path="/jobs/:id" component={JobDetails} />
         </Switch>
       </BrowserRouter>
       <div className="navigation">
