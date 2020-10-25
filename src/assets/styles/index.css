@@ -76,3 +76,15 @@ body {
   margin-left: 39%;
   border-radius: 0 0 1rem 1rem;
 }
+
+.loading {
+  position: absolute;
+  text-align: center;
+  border: 1px solid black;
+  background: #fff;
+  width: 100px;
+  z-index: 99;
+  padding: 10px 0;
+  left: 33%;
+  top: 40%;
+}
