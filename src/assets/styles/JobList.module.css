@@ -1,0 +1,43 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.wrapper i {
+  background: rgba(95, 92, 92, 0.301);
+  height: 50px;
+  width: 30px;
+  color: rgba(255, 255, 255, 0.534);
+  position: absolute;
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapper i:last-child {
+  right: 0;
+}
+
+.wrapper i:hover {
+  color: white;
+}
+
+.carousel {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.counter {
+  text-align: center;
+  margin-top: 20px;
+}

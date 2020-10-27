@@ -1,24 +1,24 @@
 const initState = {
-  jobs: [],
+  favorites: [],
   loading: false,
   error: null,
 };
 
-const jobsReducer = (state = initState, action) => {
+const favoritesReducer = (state = initState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'SUCCESS_JOBS':
+    case 'SUCCESS_FAVORITES':
       return {
         ...state,
         loading: false,
-        jobs: payload,
+        favorites: payload,
       };
-    case 'BEGIN_JOBS':
+    case 'BEGIN_FAVORITES':
       return {
         ...state,
         loading: true,
       };
-    case 'ERROR_JOBS':
+    case 'ERROR_FAVORITES':
       return {
         ...state,
         loading: false,
@@ -29,4 +29,4 @@ const jobsReducer = (state = initState, action) => {
   }
 };
 
-export default jobsReducer;
+export default favoritesReducer;
