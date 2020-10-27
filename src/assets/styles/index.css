@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: teal;
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  padding-top: 2%;
+}
+
+.navbar {
+  display: flex;
+  border: 1px solid red;
+}
+
+.navbar li {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.App {
+  width: 330px;
+  border: 5px solid #000;
+  height: 600px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 1rem;
+  padding: 1rem 0.5rem;
+  position: relative;
+  background: #f7f5fa;
+}
+
+.navigation {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  left: 0;
+  bottom: 0;
+  background-image: url('../images/navigation.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+}
+
+.navigation a {
+  flex: 1;
+}
+
+.ear-piece {
+  border: 3px solid #000;
+  position: absolute;
+  top: 0;
+  width: 60px;
+  margin-left: 39%;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.loading {
+  position: absolute;
+  text-align: center;
+  border: 1px solid black;
+  background: #fff;
+  width: 100px;
+  z-index: 99;
+  padding: 10px 0;
+  left: 33%;
+  top: 40%;
+}

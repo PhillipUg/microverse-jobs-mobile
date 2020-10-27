@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
 import JobTile from './JobTile';
 import styles from '../assets/styles/JobList.module.css';
-import { getData } from '../actions/jobsActions';
+import { getData } from '../actions/favoritesActions';
 import { getCurrentUser } from '../actions/authActions';
 
-const JobList = () => {
+const Favorites = () => {
   const { jobs, loading } = useSelector(state => ({
-    jobs: state.jobs.jobs,
-    loading: state.jobs.loading,
+    jobs: state.favorites.favorites,
+    loading: state.favorites.loading,
   }));
 
   const dispatch = useDispatch();
@@ -21,12 +21,8 @@ const JobList = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const user = getCurrentUser();
-
-  if (!user) return <Redirect to="/signin" />;
-
   const prevSlide = () => {
-    const lastIndex = jobs && jobs.length - 1;
+    const lastIndex = jobs.length - 1;
     const shouldResetIndex = currentIndex === 0;
     const index = shouldResetIndex ? lastIndex : currentIndex - 1;
 
@@ -34,12 +30,16 @@ const JobList = () => {
   };
 
   const nextSlide = () => {
-    const lastIndex = jobs && jobs.length - 1;
+    const lastIndex = jobs.length - 1;
     const shouldResetIndex = currentIndex === lastIndex;
     const index = shouldResetIndex ? 0 : currentIndex + 1;
 
     setCurrentIndex(index);
   };
+
+  const user = getCurrentUser();
+
+  if (!user) return <Redirect to="/signin" />;
 
   return (
     <section>
@@ -48,19 +48,24 @@ const JobList = () => {
         <BeatLoader loading={loading} />
       </div>
       )}
-      <div className={styles.wrapper}>
-        <i className="fas fa-angle-left" onClick={prevSlide} />{/*eslint-disable-line*/}
-        <div className={styles.carousel}>
-          {jobs && jobs.map(job => <JobTile key={job.id} job={jobs[currentIndex]} />)}
+      {!jobs.length ? (
+        <p style={{ textAlign: 'center', marginTop: '50%', color: 'grey' }}>
+          No favorites yet!
+        </p>
+      ) : (
+        <div>
+          <div className={styles.wrapper}>
+              <i className="fas fa-angle-left" onClick={prevSlide} />{/*eslint-disable-line*/}
+            <div className={styles.carousel}>
+              <JobTile key={currentIndex} job={jobs[currentIndex]} />
+            </div>
+              <i className="fas fa-angle-right" onClick={nextSlide} />{/*eslint-disable-line*/}
+          </div>
+          <div className={styles.counter}>{`${currentIndex + 1}/${jobs.length}`}</div>
         </div>
-        <i className="fas fa-angle-right" onClick={nextSlide} />{/*eslint-disable-line*/}
-      </div>
-      <div className={styles.counter}>
-        {`${currentIndex + 1}/${jobs && jobs.length}`}
-      </div>
-
+      )}
     </section>
   );
 };
 
-export default JobList;
+export default Favorites;
