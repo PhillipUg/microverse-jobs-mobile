@@ -13,7 +13,7 @@ A mobile web app for finding jobs online. Its specifically tailored to software 
   <h3 align="center">Built with React (Using React Hooks)</h3>
 
   <p align="center">
-   <a href="https://microverse-jobs.netlify.app/">View Live Demo</a>
+   <a href="https://microverse-jobs-mobile.netlify.app/">View Live Demo</a>
    .
     <a href="https://github.com/phillipug/microverse-jobs/issues">Report Bug</a>
     · 
