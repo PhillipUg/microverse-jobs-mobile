@@ -74,7 +74,7 @@ I use Axios to fetch jobs, user and favorites data and then use React Hooks to m
 
 ## Live Demo
 
-[Live Demo Link](https://microverse-jobs.netlify.app/)
+[Live Demo Link](https://microverse-jobs-mobile.netlify.app/)
 
 ## Installation
 
